@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Customer list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Customer List</h1>
+            <table border="1">
+                <tr>
+                    <th>Customer/Item</th>
+                    <th>Quantity</th>
+                    <th>Weight</th>
+                    <th>Box Count</th>
+                </tr>
+
+                <% if(customer.length> 0){ %>
+                    <% for(var i=0;i<customer.length;i++){ %>
+                        <tr>
+                            <td><%- customer[i].customer_id %></td>
+                            <td><%- customer[i].total_quantity %></td>
+                            <td><%- customer[i].total_weight %></td>
+                            <td><%- customer[i].total_box_count %></td>
+                            <% x=x + customer[i].total_quantity; %>
+                                <% y=y + customer[i].total_weight; %>
+                                    <% z=z + customer[i].total_box_count; %>
+                        </tr>
+                        <% } %>
+                            <tr>
+                                <th>Total</th>
+                                <th>
+                                    <%= x %>
+                                </th>
+                                <th>
+                                    <%= y %>
+                                </th>
+                                <th>
+                                    <%= z %>
+                                </th>
+                            </tr>
+
+                            <% }else{ %>
+                                <tr> <td colspan="4"> No Customer has placed any order </td> </tr>
+                                <% } %>
+
+
+            </table><br>
+            <button onclick="location.href='/login'"> Logout </button>
+            
+        </div>
+    </div>
+</body>
+
+</html>
